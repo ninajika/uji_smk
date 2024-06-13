@@ -2,6 +2,7 @@
 $msg = '';
 $status = isset($_GET['status']) ? $_GET['status'] : '';
 
+// for handling query berhasil atau gagal
 if (strpos($status, 'berhasil') !== false) {
     $msg = '<script>
         if (!alert_shown) {
@@ -161,7 +162,6 @@ echo $msg;
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body" style="width: 60rem;">
-                        <!-- Course selection -->
                         <div class="d-flex flex-row">
                             <div class="card mx-2" style="width: 100%;">
                                 <img src="https://akcdn.detik.net.id/visual/2023/06/13/ilustrasi-satelit-satria-1-kominfo_169.png?w=650" class="card-img-top" alt="satelit">
