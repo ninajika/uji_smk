@@ -112,9 +112,9 @@ $result = mysqli_query($koneksi, $query);
                                 </div>
                                     <?php
                                     if (mysqli_num_rows($result) > 0) {
-                                        echo '<div class="mb-3">';
                                         $counter = 1;
                                         while ($row = mysqli_fetch_assoc($result)) {
+                                            echo '<div class="mb-3">'; 
                                             echo "<h2 class='card-title'>Soal $counter</h2>";
                                             echo "<label for='soal$counter' class='form-label'>{$row['nama_soal']}</label><br>";
 
@@ -128,12 +128,13 @@ $result = mysqli_query($koneksi, $query);
                                             }
                                             echo "<br>";
                                             $counter++;
+                                            echo '</div>'; 
                                         }
-                                        echo '</div>';
+                                        echo '</div>'; 
                                         echo '<button class="btn btn-primary" name="submit" onclick="return confirm(\'Apakah anda yakin?\')">Submit</button>';
-                                    } else {
-                                        echo "<p>Tidak ada soal</p>.<br>";                            
-                                    }
+                                        } else {
+                                            echo "<p>Tidak ada soal</p>.<br>";                            
+                                        }
 
                                     mysqli_close($koneksi);
                                     ?>
