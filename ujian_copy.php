@@ -60,7 +60,7 @@ if (!isset($_SESSION['nama'])) {
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php"
-                                >Login (Test)</a
+                                >Daftar</a
                             >
                         </li>
                         <li class="nav-item">

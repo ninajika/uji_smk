@@ -45,7 +45,7 @@ echo $msg;
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Test Login ajah</title>
+        <title>Pendaftaran Permainan Quiz</title>
 
         <!--untuk import bootstrap-->
         <link
@@ -103,7 +103,7 @@ echo $msg;
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php" >Login (Test)</a>
+                            <a class="nav-link active" aria-current="page" href="index.php" >Daftar</a>
                         </li>
                         <li class="nav-item">
                             <?php if (!isset($_SESSION['nama'])): ?>

@@ -22,7 +22,7 @@ $result = mysqli_query($koneksi, $query);
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Uji (Beta)</title>
+        <title>Quiz SMK dengan Jurusan <?php echo $_SESSION['jurusan']; ?></title>
 
         <!--untuk import bootstrap-->
         <link
@@ -68,7 +68,7 @@ $result = mysqli_query($koneksi, $query);
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php"
-                                >Login (Test)</a>
+                                >Daftar</a>
                         </li>
                         <li class="nav-item">
                             <?php if (!isset($_SESSION['nama'])): ?>
