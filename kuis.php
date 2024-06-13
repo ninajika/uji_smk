@@ -68,21 +68,35 @@ $result = mysqli_query($koneksi, $query);
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php"
-                                >Login (Test)</a
-                            >
+                                >Login (Test)</a>
                         </li>
                         <li class="nav-item">
+                            <?php if (!isset($_SESSION['nama'])): ?>
                             <a class="nav-link" href="leaderboard.php"
                                 >LeaderBoard</a
                             >
+                            <?php endif; ?>
                         </li>
                         <li class="nav-item">
                             <a
                                 class="nav-link active"
                                 aroa-current="page"
-                                href="ujian.php"
-                                >Ujian</a
+                                href="kuis.php"
+                                >Kuis</a
                             >
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-danger" onclick="clearSession()">Logout</button>
+                            <script>
+                                function clearSession() {
+                                    document.cookie.split(";").forEach(function(c) {
+                                        document.cookie = c
+                                            .replace(/^ +/, "")
+                                            .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/")
+                                    });
+                                    window.location.reload();
+                                }
+                            </script>
                         </li>
                     </ul>
                 </div>
@@ -170,7 +184,7 @@ $result = mysqli_query($koneksi, $query);
                 };
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', 'ujian_post.php', true);
+                xhr.open('POST', 'kuis_post.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 
                 xhr.onreadystatechange = function () {

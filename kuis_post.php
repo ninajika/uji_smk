@@ -1,6 +1,7 @@
 <?php
 
 include 'koneksi.php';
+include 'jawaban.php';
 
 header('Content-Type: application/json');
 
@@ -33,26 +34,16 @@ if (!$valid || !isset($pengguna)) {
     exit;
 }
 
-$correct_answers = [
-    1 => 'A',
-    2 => 'C',
-    3 => 'B',
-    4 => 'A',
-    5 => 'A',
-    6 => 'A',
-    7 => 'A',
-    8 => 'B',
-    9 => 'B',
-    10 => 'C'
-];
 
 $score = 0;
 foreach ($jawaban as $answer) {
     $soal = $answer['soal'];
     $jawaban_user = $answer['jawaban'];
     
+    $correct_answers = getJawaban($jurusan);
     $score += isset($correct_answers[$soal]) && $jawaban_user === $correct_answers[$soal] ? 10 : 5; 
 }
+
 
 $time_score = 0;
 $time_in_seconds = strtotime($waktu);
@@ -71,16 +62,16 @@ if ($time_in_seconds <= strtotime('02:00')) {
 
 $score += $time_score;
 
-$answer1 = $jawaban[0]['jawaban'];
-$answer2 = $jawaban[1]['jawaban'];
-$answer3 = $jawaban[2]['jawaban'];
-$answer4 = $jawaban[3]['jawaban'];
-$answer5 = $jawaban[4]['jawaban'];
-$answer6 = $jawaban[5]['jawaban'];
-$answer7 = $jawaban[6]['jawaban'];
-$answer8 = $jawaban[7]['jawaban'];
-$answer9 = $jawaban[8]['jawaban'];
-$answer10 = $jawaban[9]['jawaban'];
+$answer1 = isset($jawaban[0]['jawaban']) ? $jawaban[0]['jawaban'] : 'null';
+$answer2 = isset($jawaban[1]['jawaban']) ? $jawaban[1]['jawaban'] : 'null';
+$answer3 = isset($jawaban[2]['jawaban']) ? $jawaban[2]['jawaban'] : 'null';
+$answer4 = isset($jawaban[3]['jawaban']) ? $jawaban[3]['jawaban'] : 'null';
+$answer5 = isset($jawaban[4]['jawaban']) ? $jawaban[4]['jawaban'] : 'null';
+$answer6 = isset($jawaban[5]['jawaban']) ? $jawaban[5]['jawaban'] : 'null';
+$answer7 = isset($jawaban[6]['jawaban']) ? $jawaban[6]['jawaban'] : 'null';
+$answer8 = isset($jawaban[7]['jawaban']) ? $jawaban[7]['jawaban'] : 'null';
+$answer9 = isset($jawaban[8]['jawaban']) ? $jawaban[8]['jawaban'] : 'null';
+$answer10 = isset($jawaban[9]['jawaban']) ? $jawaban[9]['jawaban'] : 'null';
 
 $sql = "INSERT INTO jawaban_siswa (id, pengguna, soal1, soal2, soal3, soal4, soal5, soal6, soal7, soal8, soal9, soal10, jurusan) 
         VALUES ('', '$pengguna', '$answer1', '$answer2', '$answer3', '$answer4', '$answer5', '$answer6', '$answer7', '$answer8', '$answer9', '$answer10', '$jurusan')";

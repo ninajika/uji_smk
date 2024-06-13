@@ -38,7 +38,7 @@ $result = mysqli_query($koneksi, $sql);
                         <a class="nav-link active" aria-current="page" href="leaderboard.php">LeaderBoard</a>
                     </li>
                     <li class="nav-item">
-                        <a href="ujian.php" class="nav-link">Ujian</a>
+                        <a href="kuis.php" class="nav-link">kuis</a>
                     </li>
                 </ul>
             </div>
@@ -55,9 +55,9 @@ $result = mysqli_query($koneksi, $sql);
                         <p>Sort By Jurusan</p>
                     </div>
                     <div class="d-flex justify-content-center mt-2 mb-5">
-                        <a href="leaderboard.php?jurusan=bangunan" class="btn btn-primary me-2">Bangunan</a>
-                        <a href="leaderboard.php?jurusan=telekomunikasi" class="btn btn-primary me-2">Telekomunikasi</a>
-                        <a href="leaderboard.php?jurusan=perkebunan" class="btn btn-primary">Perkebunan</a>
+                        <a href="leaderboard.php?jurusan=modelbangunan" class="btn btn-primary me-2">Desain Permodelan dan Informasi Bangunan</a>
+                        <a href="leaderboard.php?jurusan=aksestelekomunikasi" class="btn btn-primary me-2">Teknik Akses Telekomunikasi</a>
+                        <a href="leaderboard.php?jurusan=otomatisasiperkebunan" class="btn btn-primary">Otomatisasi Perkebunan</a>
                     </div>
                 </div>
                     <div class="card-body">
@@ -90,9 +90,9 @@ $result = mysqli_query($koneksi, $sql);
         </div>
     </div>
     <script>
-        // setInterval(() => {
-        //     location.reload();
-        // }, 10000);
+        setInterval(() => {
+            location.reload();
+        }, 10000);
     </script>
 </body>
 </html>

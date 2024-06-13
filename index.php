@@ -1,7 +1,7 @@
 <?php
 $msg = '';
 $status = isset($_GET['status']) ? $_GET['status'] : '';
-
+session_start();
 // for handling query berhasil atau gagal
 if (strpos($status, 'berhasil') !== false) {
     $msg = '<script>
@@ -106,10 +106,12 @@ echo $msg;
                             <a class="nav-link active" aria-current="page" href="index.php" >Login (Test)</a>
                         </li>
                         <li class="nav-item">
+                            <?php if (!isset($_SESSION['nama'])): ?>
                             <a class="nav-link" href="leaderboard.php">LeaderBoard</a>
+                            <?php endif; ?>
                         </li>
                         <li class="nav-item">
-                            <a href="ujian.php" class="nav-link">Ujian</a>
+                            <a href="kuis.php" class="nav-link">Kuis</a>
                         </li>
                         <!--<li class="nav-item">-->
                         <!--  <a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
@@ -168,7 +170,7 @@ echo $msg;
                                 <div class="card-body">
                                     <h5 class="card-title">Jurusan Teknik Akses Telekomunikasi</h5>
                                     <p class="card-text">Prospek lulusan menjadi Teknisi Fiber Optik, Teknik Radio Wireless, Teknik Internet Satelit dan Network Administrator.</p>
-                                    <button type="button" class="btn btn-primary" onclick="submitForm('telekomunikasi')">Pilih Jurusan</button>
+                                    <button type="button" class="btn btn-primary" onclick="submitForm('aksestelekomunikasi')">Pilih Jurusan</button>
                                 </div>
                             </div>
                             <div class="card mx-2" style="width: 100%;">
@@ -176,7 +178,7 @@ echo $msg;
                                 <div class="card-body">
                                     <h5 class="card-title">Jurusan Desain Permodelan dan Informasi Bangunan</h5>
                                     <p class="card-text">Prospek Lulusan menjadi Drafter, Quality Control, Quantity Surveyor, Pelaksana Lapangan, Konsultan Perencana, Kontraktor.</p>
-                                    <button type="button" class="btn btn-primary" onclick="submitForm('bangunan')">Pilih Jurusan</button>
+                                    <button type="button" class="btn btn-primary" onclick="submitForm('modelbangunan')">Pilih Jurusan</button>
                                 </div>
                             </div>
                             <div class="card mx-2" style="width: 100%;">
@@ -184,7 +186,7 @@ echo $msg;
                                 <div class="card-body">
                                     <h5 class="card-title">Jurusan Otomatisasi Perkebunan</h5>
                                     <p class="card-text">Prospek Lulusan Menjadi Programmer IOT Pertanian, Petani Modern, Perancang Sistem Kontrol dan Pebisnis Pertanian dan Perkebunan.</p>
-                                    <button type="button" class="btn btn-primary" onclick="submitForm('perkebunan')">Pilih Jurusan</button>
+                                    <button type="button" class="btn btn-primary" onclick="submitForm('otomatisasiperkebunan')">Pilih Jurusan</button>
                                 </div>
                             </div>
                         </div>
