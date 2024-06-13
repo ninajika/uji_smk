@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    overflow: hidden !important;
+    z-index: 1;
+}
+.imgimg {
+    background-image: url("https://politeknik-sampit.ac.id/wp-content/uploads/2022/03/DJI_0238_Moment.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    padding-bottom: 55%;
+    position: fixed;
+    z-index: 0;
+}
+
+.brand-logo {
+    height: 3em;
+}
