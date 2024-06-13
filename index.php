@@ -129,21 +129,21 @@ echo $msg;
                         <div
                             class="card-header text-center justify-content-center">
                             <img src="logo_smk.png" alt="logo smk" srcset="" width="100" height="100">
-                            <h4 class="mt-2">Login (test)</h4>
+                            <h4 class="mt-2">Silahkan Lengkapi Bio Dibawah ini</h4>
                         </div>
                         <div class="card-body">
                             <form id="login-form">
                                 <div class="mb-3">
                                     <label for="Nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" id="nama" name="nama" required>
+                                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Lengkap" required>
                                 </div>
                                 <div class="mb3">
                                     <label for="NomorHp" class="form-label">Nomor Hape</label>
-                                    <input type="number" name="nomor_hp" id="nomorhp" class="form-control" min="0">
+                                    <input type="number" name="nomor_hp" id="nomorhp" class="form-control" min="0" placeholder="Masukkan Nomor Telepon Anda" required>
                                 </div>
                                 <div class="mb3 mt-2">
                                     <label for="asalsekolah" class="form-label">Asal Sekolah</label>
-                                    <input type="text" name="asalsekolah" id="asalsekolah" class="form-control">
+                                    <input type="text" name="asalsekolah" id="asalsekolah" class="form-control" placeholder="Masukkan Asal Sekolah" required>
                                 </div>
                                 <div class="mt-5 justify-content-center d-flex">
                                       <button type="submit" class="btn btn-primary w-100" name="Login">Login</button>
