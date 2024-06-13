@@ -5,8 +5,16 @@ if (!isset($_SESSION['nama'])) {
     echo "<script>alert('Silahkan Mendaftar Terlebih Dahulu'); window.location.href='index.php';</script>";
 }
 
+include 'koneksi.php';
 
+$query = "SELECT * FROM soal";
 
+if (isset($_SESSION['jurusan'])) {
+    $jurusan = $_SESSION['jurusan'];
+    $query = "SELECT * FROM soal WHERE jurusan = '$jurusan'";
+}
+
+$result = mysqli_query($koneksi, $query);
 ?>
 
 <!DOCTYPE html>
@@ -99,170 +107,36 @@ if (!isset($_SESSION['nama'])) {
                                     >
                                         Waktu Berjalan :
                                         <span id="timer" style="margin-left: 0.5em" class="d-flex" >10:00</span>
+                                        <input type="hidden" name="jurusan" id="jurusan" value="<?php echo $_SESSION['jurusan']; ?>">
                                     </p>
                                 </div>
-                                    <div class="mb-3">
-                                        <h2 class="card-title">Soal 1</h2>
-                                        <label for="soal1" class="form-label">Apa Itu Kalajengking?</label>
-                                        <br />
-                                        <input type="radio" name="answer_soal1" id="optionA" value="A">
-                                        <label for="optionA">A) Hewan berkaki delapan yang memiliki cangkang keras.</label>
-                                        <br />
-                                        <input type="radio" name="answer_soal1" id="optionB" value="B">
-                                        <label for="optionB">B) Tanaman berbunga dengan duri tajam.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal1" id="optionC" value="C">
-                                        <label for="optionC">C) Jenis tanaman hias berdaun lebar dan berwarna-warni.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal1" id="optionD" value="D">
-                                        <label for="optionD">D) Ikan predator yang hidup di perairan laut dalam.</label>
-                                    </div>
-                                    <br>
-                                    <div class="mb3">
-                                        <h2 class="card-title">Soal 2</h2>
-                                        <label for="soal2" class="form-label">Apa Itu Kadal?</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal2" id="optionA" value="A">
-                                        <label for="optionA1">A) Ikan predator yang hidup di perairan laut dalam.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal2" id="optionB" value="B">
-                                        <label for="optionB2">B) Jenis tanaman hias berdaun lebar dan berwarna-warni.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal2" id="optionC" value="C">
-                                        <label for="optionC2">C) Hewan berkaki delapan yang memiliki cangkang keras.</label><br />
-                                        <input type="radio" name="answer_soal2" id="optionD" value="D">
-                                        <label for="optionD2">D) Tanaman berbunga dengan duri tajam.</label>
-                                    </div>
-                                    <br>
-                                    <div class="mb3">
-                                        <h2 class="card-title">Soal 3</h2>
-                                        <label for="soal3" class="form-label">Apa itu Fotosintesis?</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal3" id="optionA3" value="A">
-                                        <label for="optionA3">A) Proses penguraian senyawa organik menjadi senyawa anorganik dengan bantuan energi matahari.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal3" id="optionB3" value="B">
-                                        <label for="optionB3">B) Proses pembentukan senyawa organik dari senyawa anorganik dengan bantuan energi matahari.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal3" id="optionC3" value="C">
-                                        <label for="optionC3">C) Proses penguraian senyawa anorganik menjadi senyawa organik tanpa bantuan energi matahari.</label><br />
-                                        <input type="radio" name="answer_soal3" id="optionD3" value="D">
-                                        <label for="optionD3">D) Proses pembentukan senyawa anorganik dari senyawa organik tanpa bantuan energi matahari.</label>
-                                    </div>
-                                    <br>
-                                    <div class="mb3">
-                                        <h2 class="card-title">Soal 4</h2>
-                                        <label for="soal4" class="form-label">Apa yang dimaksud dengan Gravitasi?</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal4" id="optionA4" value="A">
-                                        <label for="optionA4">A) Gaya tarik-menarik antara benda-benda dengan massa.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal4" id="optionB4" value="B">
-                                        <label for="optionB4">B) Daya yang menghambat gerak benda.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal4" id="optionC4" value="C">
-                                        <label for="optionC4">C) Daya yang menyebabkan perubahan bentuk benda.</label><br />
-                                        <input type="radio" name="answer_soal4" id="optionD4" value="D">
-                                        <label for="optionD4">D) Gaya yang menggerakkan benda ke atas.</label>
-                                    </div>
-                                    <br>
-                                    <div class="mb3">
-                                        <h2 class="card-title">Soal 5</h2>
-                                        <label for="soal5" class="form-label">Apa yang dimaksud dengan Evolusi?</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal5" id="optionA5" value="A">
-                                        <label for="optionA5">A) Proses terjadinya perubahan genetik pada suatu populasi makhluk hidup dari generasi ke generasi.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal5" id="optionB5" value="B">
-                                        <label for="optionB5">B) Teori yang menjelaskan asal-usul kehidupan di Bumi.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal5" id="optionC5" value="C">
-                                        <label for="optionC5">C) Proses perubahan bentuk tubuh makhluk hidup selama hidupnya.</label><br />
-                                        <input type="radio" name="answer_soal5" id="optionD5" value="D">
-                                        <label for="optionD5">D) Proses perubahan iklim global.</label>
-                                    </div>
-                                    <br>
-                                    <div class="mb3">
-                                        <h2 class="card-title">Soal 6</h2>
-                                        <label for="soal6" class="form-label">Apa yang dimaksud dengan Medan Magnet?</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal6" id="optionA6" value="A">
-                                        <label for="optionA6">A) Daerah di sekitar magnet dimana gaya magnet terasa.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal6" id="optionB6" value="B">
-                                        <label for="optionB6">B) Titik pusat gaya magnet.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal6" id="optionC6" value="C">
-                                        <label for="optionC6">C) Daerah di sekitar magnet dimana gaya magnet paling kuat.</label><br />
-                                        <input type="radio" name="answer_soal6" id="optionD6" value="D">
-                                        <label for="optionD6">D) Titik nol gaya magnet.</label>
-                                    </div>
-                                    <br>
-                                    <div class="mb3">
-                                        <h2 class="card-title">Soal 7</h2>
-                                        <label for="soal7" class="form-label">Apa yang dimaksud dengan Hukum Newton Pertama?</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal7" id="optionA7" value="A">
-                                        <label for="optionA7">A) Setiap benda akan tetap dalam keadaan diam atau bergerak lurus beraturan selama gaya total yang bekerja padanya adalah nol.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal7" id="optionB7" value="B">
-                                        <label for="optionB7">B) Gaya yang diberikan pada suatu benda akan menghasilkan percepatan benda tersebut sebanding dengan besarnya gaya dan berlawanan arah dengan gaya tersebut.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal7" id="optionC7" value="C">
-                                        <label for="optionC7">C) Hukum yang menyatakan bahwa gaya total yang bekerja pada suatu benda sama dengan massa benda dikalikan dengan percepatannya.</label><br />
-                                        <input type="radio" name="answer_soal7" id="optionD7" value="D">
-                                        <label for="optionD7">D) Hukum yang menyatakan bahwa setiap aksi memiliki reaksi yang sebanding tetapi berlawanan arah.</label>
-                                    </div>
-                                    <br>
-                                    <div class="mb3">
-                                        <h2 class="card-title">Soal 8</h2>
-                                        <label for="soal8" class="form-label">Apa yang dimaksud dengan Iklim?</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal8" id="optionA8" value="A">
-                                        <label for="optionA8">A) Kondisi atmosfer suatu tempat pada saat tertentu.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal8" id="optionB8" value="B">
-                                        <label for="optionB8">B) Cuaca rata-rata suatu tempat dalam rentang waktu yang cukup lama.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal8" id="optionC8" value="C">
-                                        <label for="optionC8">C) Proses perubahan suhu di Bumi.</label><br />
-                                        <input type="radio" name="answer_soal8" id="optionD8" value="D">
-                                        <label for="optionD8">D) Kondisi udara di atmosfer yang berlangsung dalam waktu yang lama.</label>
-                                    </div>
-                                    <br>
-                                    <div class="mb3">
-                                        <h2 class="card-title">Soal 9</h2>
-                                        <label for="soal9" class="form-label">Apa yang dimaksud dengan Satelit Buatan?</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal9" id="optionA9" value="A">
-                                        <label for="optionA9">A) Benda langit alami yang mengorbit planet.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal9" id="optionB9" value="B">
-                                        <label for="optionB9">B) Pesawat ruang angkasa yang diluncurkan ke luar angkasa untuk mengorbit Bumi atau planet lain.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal9" id="optionC9" value="C">
-                                        <label for="optionC9">C) Pesawat ruang angkasa yang mengorbit bumi untuk keperluan komunikasi, pemetaan, dll.</label><br />
-                                        <input type="radio" name="answer_soal9" id="optionD9" value="D">
-                                        <label for="optionD9">D) Pesawat ruang angkasa yang berada di luar angkasa dan tidak mengorbit bumi.</label>
-                                    </div>
-                                    <br>
-                                    <div class="mb3">
-                                        <h2 class="card-title">Soal 10</h2>
-                                        <label for="soal10" class="form-label">Apa yang dimaksud dengan Bioteknologi?</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal10" id="optionA10" value="A">
-                                        <label for="optionA10">A) Ilmu yang mempelajari proses-proses biologis dalam organisme hidup.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal10" id="optionB10" value="B">
-                                        <label for="optionB10">B) Ilmu yang mempelajari teknologi dalam bidang biologi.</label>
-                                        <br>
-                                        <input type="radio" name="answer_soal10" id="optionC10" value="C">
-                                        <label for="optionC10">C) Penggunaan mikroorganisme atau bagian dari mikroorganisme untuk membuat produk atau proses yang berguna bagi manusia.</label><br />
-                                        <input type="radio" name="answer_soal10" id="optionD10" value="D">
-                                        <label for="optionD10">D) Teknologi yang memanfaatkan proses-proses biologi dalam produksi makanan dan minuman.</label>
-                                    </div>
-                                    <br>
-                                    <button class="btn btn-primary" name="submit" onclick="confirm('Apakah anda yakin?')">Submit</button>
+                                    <?php
+                                    if (mysqli_num_rows($result) > 0) {
+                                        echo '<div class="mb-3">';
+                                        $counter = 1;
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            echo "<h2 class='card-title'>Soal $counter</h2>";
+                                            echo "<label for='soal$counter' class='form-label'>{$row['nama_soal']}</label><br>";
+
+                                            $opsi = array($row['jawab1'], $row['jawab2'], $row['jawab3'], $row['jawab4']);
+                                            foreach ($opsi as $index => $opsi) {
+                                                $opsiJawaban = substr($opsi, 0, 1);
+                                                $opsiValue = $opsi; 
+                                                $opsiId = "option" . chr(65 + $index); // Buat Generate A, B, C dan D
+                                                echo "<input type='radio' name='answer_soal$counter' id='$opsiId' value='$opsiJawaban'>";
+                                                echo "<label for='$opsiId' style='margin-left: 5px;'>$opsiValue</label><br>";
+                                            }
+                                            echo "<br>";
+                                            $counter++;
+                                        }
+                                        echo '</div>';
+                                        echo '<button class="btn btn-primary" name="submit" onclick="return confirm(\'Apakah anda yakin?\')">Submit</button>';
+                                    } else {
+                                        echo "<p>Tidak ada soal</p>.<br>";                            
+                                    }
+
+                                    mysqli_close($koneksi);
+                                    ?>
                             </form>
                         </div>
                     </div>
@@ -290,6 +164,7 @@ if (!isset($_SESSION['nama'])) {
                 const payload = {
                     pengguna: user,
                     waktu: document.getElementById('timer').textContent,
+                    jurusan: document.getElementById('jurusan').value,
                     jawaban: answers
                 };
 

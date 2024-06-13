@@ -16,6 +16,7 @@ if ($json === null) {
 
 $pengguna = $json['pengguna'];
 $waktu = $json['waktu'];
+$jurusan = $json['jurusan'];
 $jawaban = $json['jawaban'];
 
 $valid = true;

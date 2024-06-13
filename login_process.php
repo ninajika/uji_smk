@@ -26,6 +26,7 @@ if(isset($_POST['login'])){
         $query = mysqli_query($koneksi, $sql);
         if ($query) {
             $_SESSION['nama'] = $nama;
+            $_SESSION['jurusan'] = $jurusan;
             header('location: ujian.php');
         } else {
             echo "<script>alert('Gagal')</script>";
