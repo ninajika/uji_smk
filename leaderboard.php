@@ -1,7 +1,15 @@
 <?php
 
 include 'koneksi.php';
-$sql = "SELECT nama, score FROM leaderboard ORDER BY score DESC";
+if (isset($_GET['jurusan'])) {
+    $jurusan = $_GET['jurusan'];
+    $sql = "SELECT nama, score FROM leaderboard WHERE jurusan = '$jurusan' ORDER BY score DESC";
+    $result = mysqli_query($koneksi, $sql);
+} else {
+    $sql = "SELECT nama, score FROM leaderboard ORDER BY score DESC";
+    $result = mysqli_query($koneksi, $sql);
+
+}
 $result = mysqli_query($koneksi, $sql);
 ?>
 <!DOCTYPE html>
@@ -43,6 +51,15 @@ $result = mysqli_query($koneksi, $sql);
                     <div class="card-header text-center">
                         <h4 class="mt-2">Leaderboard</h4>
                     </div>
+                    <div class="text-center">
+                        <p>Sort By Jurusan</p>
+                    </div>
+                    <div class="d-flex justify-content-center mt-2 mb-5">
+                        <a href="leaderboard.php?jurusan=bangunan" class="btn btn-primary me-2">Bangunan</a>
+                        <a href="leaderboard.php?jurusan=telekomunikasi" class="btn btn-primary me-2">Telekomunikasi</a>
+                        <a href="leaderboard.php?jurusan=perkebunan" class="btn btn-primary">Perkebunan</a>
+                    </div>
+                </div>
                     <div class="card-body">
                         <table class="table table-bordered">
                             <thead>
@@ -73,9 +90,9 @@ $result = mysqli_query($koneksi, $sql);
         </div>
     </div>
     <script>
-        setInterval(() => {
-            location.reload();
-        }, 10000);
+        // setInterval(() => {
+        //     location.reload();
+        // }, 10000);
     </script>
 </body>
 </html>

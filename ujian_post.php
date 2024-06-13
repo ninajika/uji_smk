@@ -82,13 +82,13 @@ $answer8 = $jawaban[7]['jawaban'];
 $answer9 = $jawaban[8]['jawaban'];
 $answer10 = $jawaban[9]['jawaban'];
 
-$sql = "INSERT INTO jawaban_siswa (id, pengguna, soal1, soal2, soal3, soal4, soal5, soal6, soal7, soal8, soal9, soal10) 
-        VALUES ('', '$pengguna', '$answer1', '$answer2', '$answer3', '$answer4', '$answer5', '$answer6', '$answer7', '$answer8', '$answer9', '$answer10')";
+$sql = "INSERT INTO jawaban_siswa (id, pengguna, soal1, soal2, soal3, soal4, soal5, soal6, soal7, soal8, soal9, soal10, jurusan) 
+        VALUES ('', '$pengguna', '$answer1', '$answer2', '$answer3', '$answer4', '$answer5', '$answer6', '$answer7', '$answer8', '$answer9', '$answer10', '$jurusan')";
 
 if (mysqli_query($koneksi, $sql)) {
-    $check_user = mysqli_query($koneksi, "SELECT * FROM leaderboard WHERE nama = '$pengguna'");
+    $check_user = mysqli_query($koneksi, "SELECT * FROM leaderboard WHERE nama = '$pengguna' AND jurusan = '$jurusan'");
     if (mysqli_num_rows($check_user) > 0) {
-        $sql_leaderboard = "UPDATE leaderboard SET score = '$score' WHERE nama = '$pengguna'";
+        $sql_leaderboard = "UPDATE leaderboard SET score = '$score' WHERE nama = '$pengguna' AND jurusan = '$jurusan'";
         if (mysqli_query($koneksi, $sql_leaderboard)) {
             session_start();
             session_unset();
@@ -98,7 +98,7 @@ if (mysqli_query($koneksi, $sql)) {
             echo json_encode(['status' => 'error', 'message' => 'Error pada saat memperbarui leaderboard: ' . mysqli_error($koneksi)]);
         }
     } else {
-        $sql_leaderboard = "INSERT INTO leaderboard (id, nama, score) VALUES ('', '$pengguna', '$score')";
+        $sql_leaderboard = "INSERT INTO leaderboard (id, nama, score, jurusan) VALUES ('', '$pengguna', '$score', '$jurusan')";
         if (mysqli_query($koneksi, $sql_leaderboard)) {
             session_start();
             session_unset();
