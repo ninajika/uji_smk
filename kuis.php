@@ -95,7 +95,7 @@ if ($_SESSION['jurusan'] == 'aksestelekomunikasi') {
                                 >Kuis</a
                             >
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <button class="btn btn-danger" onclick="clearSession()">Logout</button>
                             <script>
                                 function clearSession() {
@@ -107,7 +107,7 @@ if ($_SESSION['jurusan'] == 'aksestelekomunikasi') {
                                     window.location.reload();
                                 }
                             </script>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
                 <div>
