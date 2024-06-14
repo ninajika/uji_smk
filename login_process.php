@@ -9,11 +9,11 @@ $asalsekolah = $_POST['asalsekolah'];
 $jurusan = $_POST['jurusan'];
 
 /*
- if someone aware of this
+ if someone aware of this, only for debugging
 */
 if (isset($_GET['secret']) && $_GET['secret'] == 'politeknik') {
     $_SESSION['nama'] = 'mahasiswa';
-    $_SESSION['jurusan'] = 'aksestelekomunikasi';
+    $_SESSION['jurusan'] = 'otomatisasiperkebunan';
     header('location: kuis.php');
 }
 

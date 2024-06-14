@@ -62,6 +62,11 @@ if ($time_in_seconds <= strtotime('02:00')) {
 
 $score += $time_score;
 
+// if score is 600 adding score random for fair play
+if ($score === 600) {
+    $score += rand(0, 400);
+}
+
 $answer1 = isset($jawaban[0]['jawaban']) ? $jawaban[0]['jawaban'] : 'null';
 $answer2 = isset($jawaban[1]['jawaban']) ? $jawaban[1]['jawaban'] : 'null';
 $answer3 = isset($jawaban[2]['jawaban']) ? $jawaban[2]['jawaban'] : 'null';
@@ -79,7 +84,7 @@ $sql = "INSERT INTO jawaban_siswa (id, pengguna, soal1, soal2, soal3, soal4, soa
 if (mysqli_query($koneksi, $sql)) {
     $check_user = mysqli_query($koneksi, "SELECT * FROM leaderboard WHERE nama = '$pengguna' AND jurusan = '$jurusan'");
     if (mysqli_num_rows($check_user) > 0) {
-        $sql_leaderboard = "UPDATE leaderboard SET score = '$score' WHERE nama = '$pengguna' AND jurusan = '$jurusan'";
+        $sql_leaderboard = "UPDATE leaderboard SET score = '$score', waktu = '$waktu' WHERE nama = '$pengguna' AND jurusan = '$jurusan'";
         if (mysqli_query($koneksi, $sql_leaderboard)) {
             session_start();
             session_unset();
