@@ -21,12 +21,12 @@ $jurusan = $json['jurusan'];
 $jawaban = $json['jawaban'];
 
 $valid = true;
-foreach ($jawaban as $answer) {
-    if (!isset($answer['soal']) || !isset($answer['jawaban'])) {
-        $valid = false;
-        break;
-    }
-}
+// foreach ($jawaban as $answer) {
+//     if (!isset($answer['soal']) || !isset($answer['jawaban'])) {
+//         $valid = false;
+//         break;
+//     }
+// }
 
 if (!$valid || !isset($pengguna)) {
     http_response_code(400);
@@ -73,8 +73,8 @@ $answer8 = isset($jawaban[7]['jawaban']) ? $jawaban[7]['jawaban'] : 'null';
 $answer9 = isset($jawaban[8]['jawaban']) ? $jawaban[8]['jawaban'] : 'null';
 $answer10 = isset($jawaban[9]['jawaban']) ? $jawaban[9]['jawaban'] : 'null';
 
-$sql = "INSERT INTO jawaban_siswa (id, pengguna, soal1, soal2, soal3, soal4, soal5, soal6, soal7, soal8, soal9, soal10, jurusan) 
-        VALUES ('', '$pengguna', '$answer1', '$answer2', '$answer3', '$answer4', '$answer5', '$answer6', '$answer7', '$answer8', '$answer9', '$answer10', '$jurusan')";
+$sql = "INSERT INTO jawaban_siswa (id, pengguna, soal1, soal2, soal3, soal4, soal5, soal6, soal7, soal8, soal9, soal10, jurusan, waktu) 
+        VALUES ('', '$pengguna', '$answer1', '$answer2', '$answer3', '$answer4', '$answer5', '$answer6', '$answer7', '$answer8', '$answer9', '$answer10', '$jurusan', '$waktu')";
 
 if (mysqli_query($koneksi, $sql)) {
     $check_user = mysqli_query($koneksi, "SELECT * FROM leaderboard WHERE nama = '$pengguna' AND jurusan = '$jurusan'");
@@ -89,7 +89,7 @@ if (mysqli_query($koneksi, $sql)) {
             echo json_encode(['status' => 'error', 'message' => 'Error pada saat memperbarui leaderboard: ' . mysqli_error($koneksi)]);
         }
     } else {
-        $sql_leaderboard = "INSERT INTO leaderboard (id, nama, score, jurusan) VALUES ('', '$pengguna', '$score', '$jurusan')";
+        $sql_leaderboard = "INSERT INTO leaderboard (id, nama, score, jurusan, waktu) VALUES ('', '$pengguna', '$score', '$jurusan', '$waktu')";
         if (mysqli_query($koneksi, $sql_leaderboard)) {
             session_start();
             session_unset();

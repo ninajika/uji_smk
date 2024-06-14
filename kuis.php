@@ -15,6 +15,17 @@ if (isset($_SESSION['jurusan'])) {
 }
 
 $result = mysqli_query($koneksi, $query);
+
+
+if ($_SESSION['jurusan'] == 'aksestelekomunikasi') {
+    $title = 'Teknik Akses Telekomunikasi';
+} else if ($_SESSION['jurusan'] == 'modelbangunan') {
+    $title = 'Desain Permodelan dan Informasi Bangunan';
+} else if ($_SESSION['jurusan'] == 'otomatisasiperkebunan') {
+    $title = 'Otomatisasi Perkebunan';
+} else {
+    $title = '';
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +33,7 @@ $result = mysqli_query($koneksi, $query);
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Quiz SMK dengan Jurusan <?php echo $_SESSION['jurusan']; ?></title>
+        <title>Quiz SMK dengan Jurusan <?php echo $title ?></title>
 
         <!--untuk import bootstrap-->
         <link
@@ -39,12 +50,11 @@ $result = mysqli_query($koneksi, $query);
 
         <!--for debugging perpouse because i using nvim-->
         <!-- <script src="debug.js" defer></script> -->
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
         <!--bikin header -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
             <div class="container-fluid">
                 <!--<a class="navbar-brand" href="#">PlaceHolder</a>-->
                 <img
@@ -100,8 +110,17 @@ $result = mysqli_query($koneksi, $query);
                         </li>
                     </ul>
                 </div>
+                <div>
+                <p style="white-space: nowrap;" class="d-flex">
+                    Waktu Berjalan :
+                    <span id="timer" style="margin-left: 0.5em" class="d-flex" >10:00</span>
+                </p>
+                </div>
             </div>
         </nav>
+        <!-- just to make centered -->
+        <div class="mb-1"></div>
+        <br><br>
         <!-- bikin ujian body -->
         <div class="container mt-2">
             <div class="row">
@@ -112,15 +131,7 @@ $result = mysqli_query($koneksi, $query);
                             <form id="ujianForm">
                                 <input type="hidden" name="user" id="user" value="<?php echo $_SESSION['nama']; ?>">
                                 <div class="mb-3">
-                                    <p
-                                        style="
-                                            margin-left: 85%;
-                                            white-space: nowrap;
-                                        "
-                                        class="d-flex"
-                                    >
-                                        Waktu Berjalan :
-                                        <span id="timer" style="margin-left: 0.5em" class="d-flex" >10:00</span>
+                                    <p>
                                         <input type="hidden" name="jurusan" id="jurusan" value="<?php echo $_SESSION['jurusan']; ?>">
                                     </p>
                                 </div>

@@ -3,10 +3,10 @@
 include 'koneksi.php';
 if (isset($_GET['jurusan'])) {
     $jurusan = $_GET['jurusan'];
-    $sql = "SELECT nama, score FROM leaderboard WHERE jurusan = '$jurusan' ORDER BY score DESC";
+    $sql = "SELECT nama, score, waktu FROM leaderboard WHERE jurusan = '$jurusan' ORDER BY score DESC";
     $result = mysqli_query($koneksi, $sql);
 } else {
-    $sql = "SELECT nama, score FROM leaderboard ORDER BY score DESC";
+    $sql = "SELECT nama, score, waktu FROM leaderboard ORDER BY score DESC";
     $result = mysqli_query($koneksi, $sql);
 
 }
@@ -38,7 +38,7 @@ $result = mysqli_query($koneksi, $sql);
                         <a class="nav-link active" aria-current="page" href="leaderboard.php">LeaderBoard</a>
                     </li>
                     <li class="nav-item">
-                        <a href="kuis.php" class="nav-link">kuis</a>
+                        <a href="kuis.php" class="nav-link">Kuis</a>
                     </li>
                 </ul>
             </div>
@@ -67,6 +67,7 @@ $result = mysqli_query($koneksi, $sql);
                                     <th scope="col">No</th>
                                     <th scope="col">Nama</th>
                                     <th scope="col">Score</th>
+                                    <th scope="col">Waktu</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,7 +76,7 @@ $result = mysqli_query($koneksi, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     
                                     while($row = mysqli_fetch_assoc($result)) {
-                                        echo "<tr><td>" . $no++ . "</td><td>" . $row["nama"]. "</td><td>" . $row["score"]. "</td></tr>";
+                                        echo "<tr><td>" . $no++ . "</td><td>" . $row["nama"]. "</td><td>" . $row["score"]. "</td><td>" . $row["waktu"]. "</tr>";
                                     }
                                 } else {
                                     echo "<tr><td colspan='3'>No results found</td></tr>";
